@@ -1,13 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Log to confirm the endpoint is being hit
+  console.log('Adjust callback endpoint hit!');
+
   // Adjust may send data as query params or form data
   const data = { ...req.body, ...req.query };
 
-  // Log or process the callback data
+  // Log the incoming data
   console.log('Received Adjust callback:', data);
-
-  // TODO: Add your own logic here (e.g., store in DB, trigger workflows, etc.)
 
   // Respond with 200 OK
   res.status(200).send('OK');
@@ -20,4 +21,4 @@ export const config = {
       sizeLimit: '1mb',
     },
   },
-}; 
+};
